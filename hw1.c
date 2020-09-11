@@ -27,13 +27,27 @@ int main(int argc, char** argv) {
   // Steps to be performed
   //	1. Define variables (including arrays)
   
-  int n = 10;
+  int n = TOTAL_VECS;
   v_struct vector_array[n];
   char* file_name = argv[1];
-  printf("Helloooo we are in the main\n");
   
   // read through text file
   int num_vectors = read(file_name, vector_array, n);
+  
+  //Loop through array
+  for (int i=0; i < num_vectors; i++)
+  {
+    //vector magnitude
+    double r = (vector_array[i]).r;
+    double theta_deg = (vector_array[i]).theta;
+    double theta_rad = theta_deg * (PI/180);
+    double x_comp = x_component(&(vector_array[i]));
+    double y_comp = y_component(&(vector_array[i]));
+
+    //print out values
+    printf("r = %.2f, theta = %.2f deg, %.2f rad, x_comp = %.2f, y_comp = %.2f\n", 
+    r, theta_deg, theta_rad, x_comp, y_comp);
+  }
   
   
   

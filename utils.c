@@ -13,7 +13,6 @@
 #include <stdio.h>	// standard I/O functions
 #include <stdlib.h> 	// atof()
 #include <math.h>	// math functions
-
 #include "utils.h"	// user defined functions
 
 // See utils.h for the required function prototypes and specifications
@@ -72,6 +71,9 @@ int read(char* file_name, v_struct* p_vec_array, int n)
     magnitude = atof(first_val);
     direction = atof(second_val);
     
+    //make degrees in the range of (-360,360)
+    direction = fmod(direction, 360.0);
+    
     
     //store values in the the struct* p_vec_array
     // create a temp struct
@@ -81,18 +83,45 @@ int read(char* file_name, v_struct* p_vec_array, int n)
     
     
     //store struct in a struct array
-    p_vec_array[num_of_vectors] = temp_struct;
+    p_vec_array[num_of_vectors-1] = temp_struct;
 
-    //Print statements for testing
-    printf("Line length is: %zd\n", len);
-    printf("Magnitude is: %f\n", magnitude);
-    printf("Direction is: %f\n\n", direction);
-    
   }
 
   free(line);
   fclose(fp);
+  return num_of_vectors;
   
+}
+
+double x_component(v_struct* p_vec_ptr)
+{
+  //Store struct properties in local variables
+  double r = (*p_vec_ptr).r;
+  double theta = (*p_vec_ptr).theta;
+  
+  //convert theta(direction) degrees to radians theta * (pi/180)
+  theta = theta * (PI/180);
+  
+  // do operations to compute the x component
+  double x_value = r*cos(theta);
+  
+  return x_value;
+  
+}
+
+
+double y_component(v_struct* p_vec_ptr)
+{
+  //Store struct properties in local variables
+  double r = (*p_vec_ptr).r;
+  double theta = (*p_vec_ptr).theta;
+  
+  //convert theta(direction) degrees to radians theta * (pi/180)
+  theta = theta * (PI/180);
+  
+  double y_value = r*sin(theta);
+
+  return y_value;
 }
 
 
