@@ -28,10 +28,11 @@ int main(int argc, char** argv) {
   //	1. Define variables (including arrays)
   
   int n = 10;
-  v_struct* vector_array;
+  v_struct vector_array[n];
   char* file_name = argv[1];
   printf("Helloooo we are in the main\n");
   
+  // read through text file
   int num_vectors = read(file_name, vector_array, n);
   
   
