@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
   // Steps to be performed
   //	1. Define variables (including arrays)
   
-  int n = 5;
+  int n = 10;
   v_struct* vector_array;
   char* file_name = argv[1];
   printf("Helloooo we are in the main\n");

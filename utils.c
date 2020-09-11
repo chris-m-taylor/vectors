@@ -39,10 +39,23 @@ int read(char* file_name, v_struct* p_vec_array, int n)
   //Make count variable for while loop
   int count = 0;
   
-  while (len = getline(&line, &buffer_size, fp) != -1 && (count < n))
+  while ((len = getline(&line, &buffer_size, fp)) != -1 && (count < n))
   {
-    printf("read function\n");
     
+    // split the line by ,
+    
+    for (int i = 0; i < len-1; i = i+1)
+    {
+      
+      int x = 10;
+    }
+
+    printf("%zd\n", len);
+    
+    
+    
+    char* test = line;
+    //printf("%c", test[0]);
     printf("%s", line);
     count = count + 1;
   }
@@ -51,3 +64,29 @@ int read(char* file_name, v_struct* p_vec_array, int n)
   fclose(fp);
   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
