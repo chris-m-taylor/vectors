@@ -39,12 +39,15 @@ int read(char* file_name, v_struct* p_vec_array, int n)
   //Make count variable for while loop
   int count = 0;
   
-  while (count < n)
+  while (len = getline(&line, &buffer_size, fp) != -1 && (count < n))
   {
     printf("read function\n");
+    
+    printf("%s", line);
     count = count + 1;
   }
 
+  free(line);
   fclose(fp);
   
 }
